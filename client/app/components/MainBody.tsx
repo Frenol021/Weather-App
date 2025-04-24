@@ -2,8 +2,9 @@
 
 import { useWeather } from "./WeatherContext";
 
+
 export default function MainBody() {
-  const { weatherData, weatherForecast } = useWeather();
+  const { weatherData, weatherForecast, } = useWeather();
 
   if (!weatherData && !weatherForecast) {
     return <p className="p-4">Search for a city to see weather Forecast.</p>;
@@ -13,9 +14,10 @@ export default function MainBody() {
     <div className="main-body p-4 col-span-2 grid grid-cols-1 gap-4">
 
       {/* Next 3 Days Forecast */}
-      <div className="card">
+      
+      <div className=" bg-orange-400 rounded-xl shadow-sm">
         <div className="card-body">
-          <h2 className="card-title text-lg mb-4">Next 3 Days</h2>
+          <h2 className="card-title text-lg text-center mb-4">Next 3 Days</h2>
           <div className="grid grid-cols-3 gap-4 text-center">
             {weatherForecast?.map((forecast, index) => (
               <div key={index}>
@@ -39,12 +41,13 @@ export default function MainBody() {
       </div>
 
       {/* Wind Status */}
+      <div className="my-4 grid w-full grid-cols-2 gap-4">
       {weatherData && (
         <div className="card">
           <div className="card-body">
             <h2 className="card-title text-lg mb-2">Wind Status</h2>
             <p className="text-3xl font-bold">{weatherData.wind_speed} m/s</p>
-            <p className="text-gray-500">{weatherData.wind_deg}° direction</p>
+            <p className="text-gray-500">{weatherData.wind_deg}°</p>
           </div>
         </div>
       )}
@@ -59,6 +62,7 @@ export default function MainBody() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

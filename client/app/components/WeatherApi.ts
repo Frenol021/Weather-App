@@ -1,4 +1,5 @@
-
+// This file contains the functions to fetch weather data from the API
+// and the types for the weather data and forecast.
 
 export type WeatherData = {
     temperature: number;

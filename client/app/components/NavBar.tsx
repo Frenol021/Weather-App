@@ -4,10 +4,12 @@ import { useState } from "react";
 import { fetchWeather, fetchWeatherForecast } from "./WeatherApi";
 import { useWeather } from "./WeatherContext";
 
+{/* This component is a navigation bar that allows users to search for a city and toggle between Celsius and Fahrenheit. It uses the useWeather context to manage weather data and unit conversion. */}
 export default function Navbar() {
   const [city, setCity] = useState("");
-  const { setWeatherData, setWeatherForecast } = useWeather();
+  const { setWeatherData, setWeatherForecast, toggleUnit, unit } = useWeather();
 
+  {/* Function to handle the search button click */}
   const handleSearch = async () => {
     try {
       const currentWeather = await fetchWeather(city);
@@ -17,7 +19,7 @@ export default function Navbar() {
       setWeatherForecast(forecast);
     } catch (err) {
       console.error("Error fetching weather data:", err);
-      alert("City not found. Please check the spelling and try again.");
+      alert("City not found. or error fetching the weather data.");
     }
   };
 
@@ -32,14 +34,17 @@ export default function Navbar() {
           onChange={(e) => setCity(e.target.value)}
         />
         <button className="btn btn-primary" onClick={handleSearch}>
-          GO
+          Search
         </button>
 
         {/* Temperature Unit Switcher (optional feature) */}
-        <select className="select select-bordered">
-          <option value="celsius">°C</option>
-          <option value="fahrenheit">°F</option>
-        </select>
+        <button
+          className="btn btn-primary"
+          onClick={toggleUnit}
+          title="Toggle temperature unit"
+        >
+          {unit === "celsius" ? "°C" : "°F"}
+        </button>
       </div>
     </div>
   );
