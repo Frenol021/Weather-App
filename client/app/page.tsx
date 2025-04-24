@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <WeatherProvider>
    
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-cyan-500 text-white">
       {/* Top Navbar */}
       <Navbar />
 

@@ -6,7 +6,7 @@ export default function MainBody() {
   const { weatherData, weatherForecast } = useWeather();
 
   if (!weatherData && !weatherForecast) {
-    return <p className="p-4">Search for a city to see weather info.</p>;
+    return <p className="p-4">Search for a city to see weather Forecast.</p>;
   }
 
   return (

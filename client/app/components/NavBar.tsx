@@ -17,6 +17,7 @@ export default function Navbar() {
       setWeatherForecast(forecast);
     } catch (err) {
       console.error("Error fetching weather data:", err);
+      alert("City not found. Please check the spelling and try again.");
     }
   };
 
